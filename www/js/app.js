@@ -78,34 +78,30 @@ function add()
 
 function remove()
 {
-	var id = this.getAttribute(id); 					//take ID for selected
-	var array = get.Array();							//Create the lateste Array
-	array.splice(id, 1);								//Splice the Remove Task from the Array
-	
-	//updating the Array in LocalStorage
-	localStorage.setItem("ToDoTasks",JSON.stringify(array));
-	show();												//Showing the latest list
-	
+	var id = this.getAttribute("id"); 							//take ID for selected
+	var array = get.Array();									//Create the lateste Array
+	array.splice(id, 1);										//Splice the Remove Task from the Array
+	localStorage.setItem("ToDoTasks",JSON.stringify(array));	//updating the Array in LocalStorage
+	show();														//Showing the latest list
 	return false;
 }
-	
 
 function show()
 {
     var array = getArray();
-    var htmlFormat = "<ol>";
+    var htmlFormat = "<ul>";
     
     for(var i = 0; i < array.length; i++)
 		{
             htmlFormat += "<li>"+array[i]+"</li><button class='remove' id='"+i+"'>X</button>";
 		}
-    htmlFormat += "</ol>";
+    htmlFormat += "</ul>";
     
     document.getElementById("taskList").innerHTML = htmlFormat
 	
-	var buttons= document.getElementsByClassName("remove");
+	var buttons = document.getElementsByClassName("remove");
 	
-	for(z = 0; x <buttons.length; z++)
+	for(var z = 0; z <buttons.length; z++)
 		{
 			buttons[z].addEventListener("click", remove);
 		}
