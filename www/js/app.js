@@ -76,6 +76,20 @@ function add()
     return false;
 }
 
+function remove()
+{
+	var id = this.getAttribute(id); 					//take ID for selected
+	var array = get.Array();							//Create the lateste Array
+	array.splice(id, 1);								//Splice the Remove Task from the Array
+	
+	//updating the Array in LocalStorage
+	localStorage.setItem("ToDoTasks",JSON.stringify(array));
+	show();												//Showing the latest list
+	
+	return false;
+}
+	
+
 function show()
 {
     var array = getArray();
